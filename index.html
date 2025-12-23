@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Interactive portfolio with 3D laptop display and nested scroll animations"
+    />
+    <meta
+      name="keywords"
+      content="web developer, threejs, gsap, portfolio, 3d, interactive"
+    />
+    <meta name="author" content="Rahat" />
+    <meta name="theme-color" content="#6c63ff" />
+    <title>Rahat | Advanced Portfolio</title>
+
+    <!-- Google Fonts - FIXED URL (removed trailing spaces) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome - FIXED URL (removed trailing spaces) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- FullPage.js CSS - FIXED URL (removed trailing spaces) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Performance overlay for debugging -->
+    <div class="performance-overlay">
+      <div class="perf-stats">
+        <span class="fps">FPS: 0</span><br />
+        <span class="mem">Memory: N/A</span><br />
+        <span class="load">Load: 0s</span>
+      </div>
+    </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <button
+      id="darkModeToggle"
+      class="dark-mode-toggle"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Fullpage Wrapper -->
+    <div id="fullpage">
+      <!-- Section 1: Hero -->
+      <div class="section active hero-section" id="section1">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Hi, I'm <span class="highlight">Rahat</span>
+          </h1>
+          <p class="hero-subtitle">
+            Creating interactive experiences with modern web technologies
+          </p>
+          <div class="hero-buttons">
+            <a href="#section2" class="btn-primary">Explore My Work</a>
+            <a href="#section3" class="btn-secondary">About Me</a>
+          </div>
+        </div>
+
+        <!-- 3D Laptop Container -->
+        <div class="laptop-container">
+          <!-- Virtual scroll container for laptop screen content -->
+          <div class="laptop-screen-content">
+            <div class="virtual-scroll-container">
+              <div class="screen-section hero-screen">
+                <h1>My Interactive Portfolio</h1>
+                <p>Scroll to explore my projects</p>
+                <div class="scroll-indicator">
+                  <i class="fas fa-mouse" aria-hidden="true"></i>
+                  <span>Scroll Down</span>
+                </div>
+              </div>
+              <div class="screen-section portfolio-screen">
+                <h2>Featured Projects</h2>
+                <div class="screen-projects">
+                  <div class="screen-project">
+                    <div class="project-thumbnail gradient1"></div>
+                    <h3>Interactive Dashboard</h3>
+                    <p>React + Three.js + GSAP</p>
+                  </div>
+                  <div class="screen-project">
+                    <div class="project-thumbnail gradient2"></div>
+                    <h3>3D Portfolio</h3>
+                    <p>Three.js + FullPage.js</p>
+                  </div>
+                  <div class="screen-project">
+                    <div class="project-thumbnail gradient3"></div>
+                    <h3>Mobile App</h3>
+                    <p>React Native + Firebase</p>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-section about-screen">
+                <h2>About Me</h2>
+                <div class="about-content">
+                  <p>
+                    I'm a passionate web developer who loves creating
+                    interactive experiences...
+                  </p>
+                  <div class="skills-preview">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Three.js</span>
+                    <span>GSAP</span>
+                    <span>React</span>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-section contact-screen">
+                <h2>Get In Touch</h2>
+                <div class="contact-preview">
+                  <p>hello@example.com</p>
+                  <p>+1 (555) 123-4567</p>
+                  <div class="social-icons">
+                    <i class="fab fa-github" aria-label="GitHub"></i>
+                    <i class="fab fa-linkedin" aria-label="LinkedIn"></i>
+                    <i class="fab fa-twitter" aria-label="Twitter"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="laptopModel"></div>
+        </div>
+      </div>
+
+      <!-- Section 2: Portfolio -->
+      <div class="section portfolio-section" id="section2">
+        <div class="section-content">
+          <h2 class="section-title">
+            My <span class="highlight">Projects</span>
+          </h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-img gradient1"></div>
+              <h3 class="project-title">Interactive Dashboard</h3>
+              <p class="project-desc">
+                A modern analytics dashboard built with React and Three.js
+              </p>
+              <div class="project-tech">
+                <span>React</span>
+                <span>Three.js</span>
+                <span>GSAP</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-img gradient2"></div>
+              <h3 class="project-title">3D Portfolio</h3>
+              <p class="project-desc">
+                This portfolio built with advanced animations and 3D elements
+              </p>
+              <div class="project-tech">
+                <span>Three.js</span>
+                <span>FullPage.js</span>
+                <span>GSAP</span>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-img gradient3"></div>
+              <h3 class="project-title">Mobile App</h3>
+              <p class="project-desc">
+                A responsive mobile application with dark mode support
+              </p>
+              <div class="project-tech">
+                <span>React Native</span>
+                <span>Firebase</span>
+                <span>GSAP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: About -->
+      <div class="section about-section" id="section3">
+        <div class="section-content">
+          <h2 class="section-title">About <span class="highlight">Me</span></h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                Hello! I'm a passionate web developer specializing in creating
+                interactive and visually stunning web experiences. I love
+                combining design principles with cutting-edge technology to
+                build memorable digital products.
+              </p>
+              <p>
+                My journey in web development started with basic HTML and CSS,
+                and has evolved through exploring advanced libraries like
+                Three.js, GSAP, and FullPage.js. I believe in continuous
+                learning and pushing the boundaries of what's possible on the
+                web.
+              </p>
+              <div class="skills">
+                <h3>My Skills:</h3>
+                <div class="skills-grid">
+                  <div class="skill-item">HTML5</div>
+                  <div class="skill-item">CSS3</div>
+                  <div class="skill-item">JavaScript</div>
+                  <div class="skill-item">Three.js</div>
+                  <div class="skill-item">GSAP</div>
+                  <div class="skill-item">FullPage.js</div>
+                </div>
+              </div>
+            </div>
+            <div class="about-image">
+              <div class="image-placeholder">
+                <i class="fas fa-user-astronaut" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Contact -->
+      <div class="section contact-section" id="section4">
+        <div class="section-content">
+          <h2 class="section-title">
+            Get In <span class="highlight">Touch</span>
+          </h2>
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <span>hello@example.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>San Francisco, CA</span>
+              </div>
+            </div>
+            <div class="contact-form">
+              <form id="contactForm">
+                <div class="form-group">
+                  <input type="text" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                  <input type="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    placeholder="Your Message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" aria-hidden="true">
+      <div class="loading-spinner"></div>
+      <p>Loading portfolio...</p>
+    </div>
+
+    <!-- Enhanced Navigation System - Properly placed -->
+    <div class="section-navigation">
+      <div class="nav-container">
+        <div class="nav-buttons">
+          <button
+            class="nav-button active"
+            data-section="1"
+            data-target="#section1"
+          >
+            <span class="nav-icon">🏠</span>
+            <span class="nav-text">Home</span>
+          </button>
+          <button class="nav-button" data-section="2" data-target="#section2">
+            <span class="nav-icon">💼</span>
+            <span class="nav-text">Portfolio</span>
+          </button>
+          <button class="nav-button" data-section="3" data-target="#section3">
+            <span class="nav-icon">👤</span>
+            <span class="nav-text">About</span>
+          </button>
+          <button class="nav-button" data-section="4" data-target="#section4">
+            <span class="nav-icon">📧</span>
+            <span class="nav-text">Contact</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Progress Indicator -->
+    <div class="section-progress">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Scripts - All from CDNs, no installation needed - FIXED URLs -->
+    <!-- Three.js - FIXED URL (removed trailing spaces) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GLTF Loader - FIXED URL (removed trailing spaces) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+
+    <!-- Orbit Controls - FIXED URL (removed trailing spaces) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- GSAP - FIXED URL (removed trailing spaces) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <!-- FullPage.js - FIXED URL (removed trailing spaces) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
+
+    <!-- Custom Configuration -->
+    <script src="js/config.js"></script>
+
+    <!-- Navigation initialization must happen AFTER FullPage.js loads -->
+    <script>
+      // Navigation system initialization
+      document.addEventListener("DOMContentLoaded", function () {
+        // Wait for FullPage.js to be available
+        const checkFullpage = setInterval(() => {
+          if (typeof fullpage !== "undefined") {
+            clearInterval(checkFullpage);
+            initNavigation();
+          }
+        }, 100);
+
+        // Fallback initialization after 3 seconds
+        setTimeout(() => {
+          clearInterval(checkFullpage);
+          if (typeof fullpage === "undefined") {
+            console.warn(
+              "FullPage.js not loaded, initializing fallback navigation"
+            );
+            initFallbackNavigation();
+          }
+        }, 3000);
+      });
+
+      function initNavigation() {
+        console.log("Initializing FullPage.js navigation system...");
+
+        const navButtons = document.querySelectorAll(".nav-button");
+        const sectionNavigation = document.querySelector(".section-navigation");
+        const progressFill = document.querySelector(".progress-fill");
+
+        // Show navigation
+        sectionNavigation.classList.add("visible");
+        document.querySelector(".section-progress").classList.add("visible");
+
+        // Initialize FullPage.js
+        const fullpageApi = new fullpage("#fullpage", {
+          licenseKey: "8KHTU-9Z5YV-3VJ3C-IK4XN", // Free development license
+          autoScrolling: true,
+          navigation: false,
+          scrollingSpeed: 700,
+          easing: "easeInOutCubic",
+          loopBottom: false,
+          loopTop: false,
+          css3: true,
+          paddingTop: "3em",
+          paddingBottom: "70px",
+          recordHistory: true,
+          scrollBar: false,
+          touchSensitivity: 15,
+          normalScrollElements: ".contact-form, .section-navigation",
+
+          // Callbacks
+          afterLoad: function (origin, destination) {
+            updateActiveNavigation(destination.index + 1);
+            updateProgress(destination.index + 1);
+          },
+        });
+
+        // Update active navigation button
+        function updateActiveNavigation(sectionNumber) {
+          navButtons.forEach((button) => {
+            const buttonSection = parseInt(button.getAttribute("data-section"));
+            button.classList.toggle("active", buttonSection === sectionNumber);
+          });
+        }
+
+        // Update progress bar
+        function updateProgress(sectionNumber) {
+          const progress = ((sectionNumber - 1) / 3) * 100;
+          progressFill.style.width = `${Math.min(progress, 100)}%`;
+        }
+
+        // Navigation button click handler
+        navButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const sectionNumber = parseInt(this.getAttribute("data-section"));
+            const targetSelector = this.getAttribute("data-target");
+
+            // Update UI immediately for better feedback
+            navButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+            updateProgress(sectionNumber);
+
+            // Navigate
+            fullpageApi.moveTo(sectionNumber);
+          });
+        });
+
+        // Mobile touch support
+        document.addEventListener(
+          "touchstart",
+          function () {
+            if (!sectionNavigation.classList.contains("visible")) {
+              sectionNavigation.classList.add("visible");
+              document
+                .querySelector(".section-progress")
+                .classList.add("visible");
+            }
+          },
+          { once: true }
+        );
+
+        console.log("FullPage.js navigation system initialized successfully");
+      }
+
+      function initFallbackNavigation() {
+        console.log("Initializing fallback navigation system...");
+
+        const navButtons = document.querySelectorAll(".nav-button");
+        const sectionNavigation = document.querySelector(".section-navigation");
+        const progressFill = document.querySelector(".progress-fill");
+
+        // Show navigation
+        sectionNavigation.classList.add("visible");
+        document.querySelector(".section-progress").classList.add("visible");
+
+        // Enable regular scrolling
+        document.body.style.overflowY = "auto";
+        document.getElementById("fullpage").style.height = "auto";
+
+        // Navigation button click handler
+        navButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const sectionNumber = parseInt(this.getAttribute("data-section"));
+            const targetSelector = this.getAttribute("data-target");
+
+            // Update UI
+            navButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            // Update progress
+            const progress = ((sectionNumber - 1) / 3) * 100;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+
+            // Scroll to section
+            const targetElement = document.querySelector(targetSelector);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Auto-update navigation on scroll
+        let lastSection = 1;
+        window.addEventListener("scroll", () => {
+          const scrollPosition = window.scrollY;
+          const sections = document.querySelectorAll(".section");
+
+          sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (
+              scrollPosition >= sectionTop - 100 &&
+              scrollPosition < sectionTop + sectionHeight &&
+              lastSection !== index + 1
+            ) {
+              lastSection = index + 1;
+              navButtons.forEach((button) => {
+                button.classList.toggle(
+                  "active",
+                  parseInt(button.getAttribute("data-section")) === lastSection
+                );
+              });
+
+              const progress = ((lastSection - 1) / 3) * 100;
+              progressFill.style.width = `${Math.min(progress, 100)}%`;
+            }
+          });
+        });
+
+        console.log("Fallback navigation system initialized successfully");
+      }
+    </script>
+
+    <!-- Custom JavaScript (must load after navigation initialization) -->
+    <script src="js/main.js"></script>
+    <script src="js/laptop.js"></script>
+  </body>
+</html>
